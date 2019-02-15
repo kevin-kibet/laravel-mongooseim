@@ -7,8 +7,10 @@ composer require kevin-kibet/laravel-mongooseim
 ```
 ## Configuration
 You can publish the configuration file using this command
-
+```bash
 $ php artisan vendor:publish --provider="MongooseIm\Providers\MongooseImServiceProvider"
+```
+#### Sample configuration
 ```php
 <?php
 return [
@@ -41,16 +43,12 @@ $app->register(MongooseIm\Providers\MongooseImServiceProvider::class);
 ```
 ## Examples
 
-#### Create user
-Register a new user to your xmpp server
+#### Send message
+Send message to a user or room
 ```php
-$create_user = new CreateUser($user, $password, $host);
-$response = MongooseImFacade::createUser($create_user);
+$send_message = new SendMessage($to, $from, $body);
+$response = MongooseImFacade::execute($send_message);
 ```
 
-#### Send message
-Send message to a user or conference
-```php
-$send_message = new SendMessage($type, $from, $to, $subject, $body);
-$response = MongooseImFacade::sendMessage($send_message);
-```
+#### Others
+> Coming soon

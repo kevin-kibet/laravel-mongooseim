@@ -8,12 +8,11 @@
 
 namespace MongooseIm;
 
-use MongooseIm\Commands\Contracts\MongooseImCommand;
-use MongooseIm\Commands\SendMessage;
-use MongooseIm\Exceptions\MongooseImException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
+use MongooseIm\Commands\Contracts\MongooseImCommand;
+use MongooseIm\Exceptions\MongooseImException;
 
 /**
  * Class MongooseIm
@@ -86,25 +85,5 @@ class MongooseIm
      */
     public function executeQueue(MongooseImCommand $command)
     {
-    }
-
-    /**
-     * @param CreateUser $createUser
-     * @return null|\Psr\Http\Message\StreamInterface
-     * @throws MongooseImException
-     */
-    public function createUser(CreateUser $createUser)
-    {
-        return $this->execute($createUser);
-    }
-
-    /**
-     * @param SendMessage $sendMessage
-     * @return null|\Psr\Http\Message\StreamInterface
-     * @throws MongooseImException
-     */
-    public function sendMessage(SendMessage $sendMessage)
-    {
-        return $this->execute($sendMessage);
     }
 }
