@@ -9,7 +9,6 @@
 namespace MongooseIm;
 
 use MongooseIm\Commands\Contracts\MongooseImCommand;
-use MongooseIm\Commands\CreateUser;
 use MongooseIm\Commands\SendMessage;
 use MongooseIm\Exceptions\MongooseImException;
 use GuzzleHttp\Client;
@@ -23,22 +22,21 @@ use Illuminate\Support\Facades\Log;
 class MongooseIm
 {
     private $api = '';
-    private $user = '';
-    private $password = '';
     private $domain = '';
-    private $conference_domain = '';
+    private $muc_domain = '';
+    private $muc_light_domain = '';
 
-    private $debug = '';
+    private $debug = false;
+    private $config;
 
     public function __construct($config)
     {
-        $this->api = $config['api'];// config('mongoose-im.api', '');
-        $this->user = $config['user'];// config('mongoose-im.username', '');
-        $this->password = $config['password'];//config('mongoose-im.password', '');
+        $this->api = $config['api'];
         $this->domain = $config['domain'];
-        $this->conference_domain = $config['conference_domain'];
-
+        $this->muc_domain = $config['muc_domain'];
+        $this->muc_light_domain = $config['muc_light_domain'];
         $this->debug = $config['debug'];
+        $this->config = $config;
     }
 
     /**
@@ -52,8 +50,12 @@ class MongooseIm
             'verify' => false,
             'base_uri' => $this->api
         ]);
-        //TODO: Add Host
+
+        if (method_exists($command, 'setConfig')) {
+            $command->setConfig($this->config);
+        }
         $url = $command->url();
+
         try {
             $response = $client->request($command->method(), $url, [
                 'headers' => [

@@ -28,8 +28,6 @@ interface MongooseImCommand
      */
     public function method();
 
-    /**
-     * @return boolean
-     */
-    public function addHost();
+    /** @return string */
+    public function accept();
 }

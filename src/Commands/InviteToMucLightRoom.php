@@ -16,41 +16,35 @@ use MongooseIm\Xmpp\Jid;
  * Class CreateMucLightRoom
  * @package MongooseIm
  */
-class CreateMucLightRoom implements MongooseImCommand
+class InviteToMucLightRoom implements MongooseImCommand
 {
     use ConfigAwareCommand;
     /**
-     * @var
-     * will form the username part for the jid
+     * @var Jid
      */
-    private $id;
+    private $sender_jid;
 
     /**
      * @var Jid
      */
-    private $owner_jid;
+    private $recipient_jid;
 
     /**
-     * @var
+     * @var Jid
      */
-    private $name;
-
-    /**
-     * @var
-     */
-    private $subject;
+    private $group_jid;
 
     /**
      * CreateMucLightRoom constructor.
-     * @param $id
-     * @param Jid $owner_jid
-     * @param $subject
+     * @param Jid $sender_jid
+     * @param Jid $recipient_jid
+     * @param $group_jid
      */
-    public function __construct($id, Jid $owner_jid, $subject)
+    public function __construct(Jid $sender_jid, Jid $recipient_jid, $group_jid)
     {
-        $this->id = $id;
-        $this->owner_jid = $owner_jid;
-        $this->subject = $subject;
+        $this->sender_jid = $sender_jid;
+        $this->recipient_jid = $recipient_jid;
+        $this->group_jid = $group_jid;
     }
 
     /**
@@ -58,7 +52,7 @@ class CreateMucLightRoom implements MongooseImCommand
      */
     public function url()
     {
-        return 'muc-lights/' . $this->getDomain();
+        return 'muc-lights/' . $this->getMucLightDomain() . '/' . $this->group_jid->getUsername() . '/participants';
     }
 
     /**
@@ -67,10 +61,8 @@ class CreateMucLightRoom implements MongooseImCommand
     public function data()
     {
         return [
-            'id' => $this->id,
-            'owner' => $this->owner_jid->getBareJidString(),
-            'name' => $this->id,
-            'subject' => $this->subject
+            'sender' => $this->sender_jid->getBareJidString(),
+            'recipient' => $this->recipient_jid->getBareJidString(),
         ];
     }
 
@@ -79,7 +71,7 @@ class CreateMucLightRoom implements MongooseImCommand
      */
     public function method()
     {
-        return 'PUT';
+        return 'POST';
     }
 
 

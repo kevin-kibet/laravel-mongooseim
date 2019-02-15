@@ -10,7 +10,5 @@ return [
     'domain' => env('MONGOOSE_IM_DOMAIN', 'im.savepal.novacent.net'),
     'muc_domain' => env('MONGOOSE_IM_MUC_DOMAIN'),
     'muc_light_domain' => env('MONGOOSE_IM_MUC_LIGHT_DOMAIN'),
-    'user' => env('MONGOOSE_IM_USER'),
-    'password' => env('MONGOOSE_IM_PASSWORD'),
     'debug' => env('MONGOOSE_IM_DEBUG', true)
 ];
