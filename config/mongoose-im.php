@@ -6,9 +6,9 @@
  * Time: 4:02 PM
  */
 return [
-    'api' => env('MONGOOSE_IM_API', 'http://im.savepal.novacent.net'),
-    'domain' => env('MONGOOSE_IM_DOMAIN', 'im.savepal.novacent.net'),
-    'muc_domain' => env('MONGOOSE_IM_MUC_DOMAIN'),
-    'muc_light_domain' => env('MONGOOSE_IM_MUC_LIGHT_DOMAIN'),
+    'api' => env('MONGOOSE_IM_API', 'http://conversations.im:8088/api'),
+    'domain' => env('MONGOOSE_IM_DOMAIN', 'conversations.im'),
+    'muc_domain' => env('MONGOOSE_IM_MUC_DOMAIN', 'muc.conversations.im'),
+    'muc_light_domain' => env('MONGOOSE_IM_MUC_LIGHT_DOMAIN', 'muclight.conversations.im'),
     'debug' => env('MONGOOSE_IM_DEBUG', true)
 ];
