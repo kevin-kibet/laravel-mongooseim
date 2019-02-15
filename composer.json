@@ -13,9 +13,18 @@
     "guzzlehttp/guzzle": "^6.3",
     "illuminate/support": "^5"
   },
+  "require-dev": {
+    "phpunit/phpunit": "^5.3",
+    "orchestra/testbench": "~3.0"
+  },
   "autoload": {
     "psr-4": {
       "MongooseIm\\": "src"
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "MongooseIm\\Tests\\": "tests/"
+      }
     }
   },
   "extra": {
@@ -28,5 +37,6 @@
       }
     }
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
