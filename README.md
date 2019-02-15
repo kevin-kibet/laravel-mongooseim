@@ -3,7 +3,7 @@
 
 ## Installation
 ```
-composer require kevin-kibet/laravel-mongoose-im
+composer require kevin-kibet/laravel-mongooseim
 ```
 ## Configuration
 You can publish the configuration file using this command

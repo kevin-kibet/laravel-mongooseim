@@ -1,5 +1,5 @@
 {
-  "name": "kevin-kibet/laravel-mongoose-im",
+  "name": "kevin-kibet/laravel-mongooseim",
   "description": "Mongoose API Wrapper for Laravel/lumen",
   "license": "MIT",
   "authors": [
