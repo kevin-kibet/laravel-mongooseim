@@ -117,7 +117,7 @@ class Jid
      */
     public function getBareJidString()
     {
-        return $this->username . $this->component ? '.' : '@' . $this->host;
+        return $this->username . '' . ($this->component ? '.' : '@' . $this->host);
     }
 
     /**
