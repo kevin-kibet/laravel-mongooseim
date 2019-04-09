@@ -40,7 +40,7 @@ class InviteToMucLightRoom implements MongooseImCommand
      * @param Jid $recipient_jid
      * @param $group_jid
      */
-    public function __construct(Jid $sender_jid, Jid $recipient_jid, $group_jid)
+    public function __construct(Jid $sender_jid, Jid $recipient_jid, Jid $group_jid)
     {
         $this->sender_jid = $sender_jid;
         $this->recipient_jid = $recipient_jid;
