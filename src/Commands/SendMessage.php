@@ -95,13 +95,13 @@ class SendMessage implements MongooseImCommand
          */
         if ($this->isRoomMessage()) {
             return [
-                'from' => $this->from,
+                'from' => $this->from->getBareJidString(),
                 'body' => $this->body
             ];
         }
         return [
-            'caller' => $this->from,
-            'to' => $this->to,
+            'caller' => $this->from->getBareJidString(),
+            'to' => $this->to->getBareJidString(),
             'body' => $this->body
         ];
     }
